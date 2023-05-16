@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "name": "Bitcoin",
+    "ticker": "BTC",
+    "price": 27960,
+    "balance": 0.5
+  },
+  {
+    "id": 2,
+    "name": "Ethereum",
+    "ticker": "ETH",
+    "price": 1820,
+    "balance": 3.5
+  },
+  {
+    "id": 3,
+    "name": "Arbitrum",
+    "ticker": "ARB",
+    "price": 1.14,
+    "balance": 279
+  }
+]
