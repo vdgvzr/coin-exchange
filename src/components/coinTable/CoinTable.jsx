@@ -39,7 +39,7 @@ export default function CoinTable({ coins, rowsPerPage, setRowsPerPage }) {
                   <option value="100" selected>
                     100
                   </option>
-                  <option value={coins.length}>All</option>
+                  <option value={coins?.length}>All</option>
                 </FormSelect>
               </FormGroup>
             </Form>
@@ -47,21 +47,28 @@ export default function CoinTable({ coins, rowsPerPage, setRowsPerPage }) {
         </Row>
         <Row>
           <Col>
-            <StyledTable isDarkMode={isDarkMode}>
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>Coin</th>
-                  <th>Price</th>
-                  <th>Market Cap</th>
-                </tr>
-              </thead>
-              <tbody>
-                {slice.map((coin) => {
-                  return <Coin key={coin.id} {...coin} />;
-                })}
-              </tbody>
-            </StyledTable>
+            {coins ? (
+              <StyledTable isDarkMode={isDarkMode}>
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Coin</th>
+                    <th>Price</th>
+                    <th>Market Cap</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {slice.map((coin) => {
+                    return <Coin key={coin.id} {...coin} />;
+                  })}
+                </tbody>
+              </StyledTable>
+            ) : (
+              <Heading
+                headingText="No data to show at this time, please try again later."
+                headingSize={6}
+              />
+            )}
             <CoinPagination range={range} setPage={setPage} page={page} />
           </Col>
         </Row>

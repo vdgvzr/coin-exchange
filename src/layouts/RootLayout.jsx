@@ -1,4 +1,9 @@
-import { Outlet, ScrollRestoration, useLoaderData } from "react-router-dom";
+import {
+  Outlet,
+  ScrollRestoration,
+  useLoaderData,
+  useNavigation,
+} from "react-router-dom";
 import { getApi } from "../../src/api/api";
 import Navigation from "../components/navigation/Navigation";
 import { Container } from "react-bootstrap";
@@ -12,6 +17,7 @@ export const RootContext = React.createContext(null);
 function RootLayout() {
   // Get loader data
   const { getGlobal, getCoins, getExchanges } = useLoaderData();
+  const { state } = useNavigation();
 
   // Component state
   const [global, setGlobal] = useState(getGlobal);
@@ -50,7 +56,8 @@ function RootLayout() {
         <UtilBar />
         <Navigation />
         <ScrollRestoration />
-        <Container>
+        {state === "loading" && <div className="loading-spinner"></div>}
+        <Container className={`${state === "loading" ? "loading" : null}`}>
           <Outlet />
         </Container>
       </Root>

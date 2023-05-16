@@ -18,13 +18,8 @@ export default function Coin({
   return (
     <Tr isDarkMode={isDarkMode}>
       <Td>{rank}</Td>
-      <Td style={{ textAlign: "start" }}>
-        <Link
-          className={`link-${
-            isDarkMode ? `light` : `dark`
-          } text-decoration-none`}
-          to={`${id}`}
-        >
+      <Td className="coinRow_name">
+        <Link className={`link-${isDarkMode ? `light` : `dark`}`} to={`${id}`}>
           <span className="fw-bold me-2">{name}</span>{" "}
           <small className="fw-ligh">{symbol}</small>
         </Link>
