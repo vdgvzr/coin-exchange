@@ -25,6 +25,15 @@ function RootLayout() {
   const [exchanges, setExchanges] = useState(getExchanges);
   const [showBalance, setShowBalance] = useLocalStorage("SHOW_BALANCE", false);
   const [isDarkMode, setIsDarkMode] = useLocalStorage("IS_DARK_MODE", false);
+  const [searchQuery, setSearchQuery] = useState("");
+
+  useEffect(() => {
+    setCoins(
+      getCoins.filter((coin) =>
+        coin.name.toLowerCase().includes(searchQuery.toLowerCase())
+      )
+    );
+  }, [searchQuery, getCoins]);
 
   useEffect(() => {
     setGlobal(getGlobal);
@@ -50,6 +59,7 @@ function RootLayout() {
         setIsDarkMode: setIsDarkMode,
         showBalance: showBalance,
         setShowBalance: setShowBalance,
+        setSearchQuery: setSearchQuery,
       }}
     >
       <Root isDarkMode={isDarkMode}>

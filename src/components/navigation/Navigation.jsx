@@ -6,7 +6,7 @@ import { useContext } from "react";
 import { Form as DomForm } from "react-router-dom";
 
 export default function Navigation() {
-  const { isDarkMode } = useContext(RootContext);
+  const { isDarkMode, setSearchQuery } = useContext(RootContext);
 
   return (
     <Navbar
@@ -33,7 +33,12 @@ export default function Navigation() {
             })}
           </Nav>
           <DomForm className="d-flex">
-            <Form.Control type="search" className="mx-2" name="query" />
+            <Form.Control
+              type="search"
+              className="mx-2"
+              name="query"
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
             <Button variant={isDarkMode ? "light" : "dark"} type="submit">
               Search
             </Button>
