@@ -1,5 +1,9 @@
 function formatValue(value) {
-  return value.toLocaleString();
+  return value && value.toLocaleString();
 }
 
-export { formatValue };
+function isPositive(value) {
+  return !Object.is(Math.abs(value), +value);
+}
+
+export { formatValue, isPositive };

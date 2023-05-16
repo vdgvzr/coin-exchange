@@ -1,9 +1,4 @@
-import {
-  Outlet,
-  ScrollRestoration,
-  redirect,
-  useLoaderData,
-} from "react-router-dom";
+import { Outlet, ScrollRestoration, useLoaderData } from "react-router-dom";
 import { getApi } from "../../src/api/api";
 import Navigation from "../components/navigation/Navigation";
 import { Container } from "react-bootstrap";
@@ -69,25 +64,25 @@ async function loader({ request: { signal, url } }) {
 
   const filterParams = { q: query };
 
-  const getGlobal = getApi({
+  /* const getGlobal = getApi({
     url: "global",
     options: { signal },
-  });
+  }); */
 
   const getCoins = getApi({
     url: "tickers",
     options: { signal, params: filterParams },
   });
 
-  const getExchanges = getApi({
+  /* const getExchanges = getApi({
     url: "exchanges",
     options: { signal },
-  });
+  }); */
 
   return {
-    getGlobal: await getGlobal,
+    // getGlobal: await getGlobal,
     getCoins: await getCoins,
-    getExchanges: await getExchanges,
+    // getExchanges: await getExchanges,
   };
 }
 
