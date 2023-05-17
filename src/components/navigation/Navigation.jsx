@@ -32,17 +32,6 @@ export default function Navigation() {
               );
             })}
           </Nav>
-          <DomForm className="d-flex">
-            <Form.Control
-              type="search"
-              className="mx-2"
-              name="query"
-              onChange={(e) => setSearchQuery(e.target.value)}
-            />
-            <Button variant={isDarkMode ? "light" : "dark"} type="submit">
-              Search
-            </Button>
-          </DomForm>
         </Navbar.Collapse>
       </Container>
     </Navbar>

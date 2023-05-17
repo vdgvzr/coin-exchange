@@ -10,6 +10,17 @@ export const Root = styled.div.attrs((props) => ({
   position: relative;
   min-height: 100vh;
 
+  input,
+  select {
+    background-color: ${(props) => (props.isDarkMode ? `#121212` : `white`)};
+    color: ${(props) => (props.isDarkMode ? globalVar.colorGrey : `black`)};
+
+    &:focus {
+      background-color: ${(props) => (props.isDarkMode ? `#121212` : `white`)};
+      color: ${(props) => (props.isDarkMode ? globalVar.colorGrey : `black`)};
+    }
+  }
+
   .loading {
     filter: blur(5px);
     pointer-events: none;

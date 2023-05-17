@@ -10,7 +10,8 @@ export const GlobalValue = styled.div.attrs((props) => ({
   }
 
   .globalvalue_value {
-    color: ${(props) => (props.isDarkMode ? `lightgrey` : `blue`)};
+    color: ${(props) =>
+      props.isDarkMode ? `lightgrey` : `hsl(200, 100%, 50%)`};
 
     .globalvalue_change {
       &-red {

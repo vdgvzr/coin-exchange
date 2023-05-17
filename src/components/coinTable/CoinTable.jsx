@@ -8,9 +8,10 @@ import CoinPagination from "../coinPagination/CoinPagination";
 import Heading from "../heading/Heading";
 import { Col, Form, FormLabel, FormSelect, Row } from "react-bootstrap";
 import FormGroup from "../forms/FormGroup";
+import { Form as DomForm } from "react-router-dom";
 
 export default function CoinTable({ coins, rowsPerPage, setRowsPerPage }) {
-  const { isDarkMode } = useContext(RootContext);
+  const { isDarkMode, searchQuery, setSearchQuery } = useContext(RootContext);
   const [page, setPage] = useState(1);
   const { slice, range } = useTable(coins, page, rowsPerPage);
 
@@ -27,13 +28,28 @@ export default function CoinTable({ coins, rowsPerPage, setRowsPerPage }) {
           <Col>
             <Heading headingText="Cryptocurrency Prices" headingSize={1} />
           </Col>
-          <Col md={2}>
+        </Row>
+        <Row>
+          <Col md={6}>
+            <DomForm>
+              <FormLabel htmlFor="search-table">Search Coins</FormLabel>
+              <Form.Control
+                id="search-table"
+                type="search"
+                className="me-2"
+                name="query"
+                onChange={(e) => setSearchQuery(e.target.value)}
+              />
+            </DomForm>
+          </Col>
+          <Col md={6}>
             <Form>
               <FormGroup>
-                <FormLabel htmlFor="display" className="me-3">
-                  Rows Per Page
-                </FormLabel>
-                <FormSelect onChange={(e) => setRowsPerPage(e.target.value)}>
+                <FormLabel htmlFor="row-display">Rows Per Page</FormLabel>
+                <FormSelect
+                  id="row-display"
+                  onChange={(e) => setRowsPerPage(e.target.value)}
+                >
                   <option value="10">10</option>
                   <option value="50">50</option>
                   <option value="100" selected>
@@ -45,10 +61,13 @@ export default function CoinTable({ coins, rowsPerPage, setRowsPerPage }) {
             </Form>
           </Col>
         </Row>
+        <Row className="my-3">
+          {searchQuery && <Col>{coins.length} results</Col>}
+        </Row>
         <Row>
           <Col>
             {coins ? (
-              <StyledTable isDarkMode={isDarkMode}>
+              <StyledTable isDarkMode={isDarkMode} responsive>
                 <thead>
                   <tr>
                     <th>#</th>
@@ -57,7 +76,7 @@ export default function CoinTable({ coins, rowsPerPage, setRowsPerPage }) {
                     <th>1h</th>
                     <th>24h</th>
                     <th>7d</th>
-                    <th>Market Cap</th>
+                    <th>Mkt Cap</th>
                   </tr>
                 </thead>
                 <tbody>

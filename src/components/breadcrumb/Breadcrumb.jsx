@@ -10,22 +10,23 @@ function SiteBreadcrumb() {
   function formatCrumb(crumb) {
     return crumb.substring(0, crumb.indexOf("-")).toUpperCase();
   }
-
   return (
-    <StyledBreadcrumb className="my-3" isDarkMode={isDarkMode}>
-      <Breadcrumb.Item href="/">Cryptocurrencies</Breadcrumb.Item>
-      {breadcrumbs.map((crumb, index) => {
-        return (
-          <Breadcrumb.Item
-            key={index}
-            active={breadcrumbs.length}
-            href={`/${crumb}`}
-          >
-            {formatCrumb(crumb)}
-          </Breadcrumb.Item>
-        );
-      })}
-    </StyledBreadcrumb>
+    window.location.pathname !== "/" && (
+      <StyledBreadcrumb className="my-3" isDarkMode={isDarkMode}>
+        <Breadcrumb.Item href="/">Cryptocurrencies</Breadcrumb.Item>
+        {breadcrumbs.map((crumb, index) => {
+          return (
+            <Breadcrumb.Item
+              key={index}
+              active={breadcrumbs.length}
+              href={`/${crumb}`}
+            >
+              {formatCrumb(crumb)}
+            </Breadcrumb.Item>
+          );
+        })}
+      </StyledBreadcrumb>
+    )
   );
 }
 

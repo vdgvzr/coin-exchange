@@ -11,6 +11,7 @@ import React, { useEffect, useState } from "react";
 import { Root } from "./RootLayoutStyles";
 import { useLocalStorage } from "../utils/customHooks/useLocalStorage";
 import UtilBar from "../components/utilBar/UtilBar";
+import SiteBreadcrumb from "../components/breadcrumb/Breadcrumb";
 
 export const RootContext = React.createContext(null);
 
@@ -59,6 +60,7 @@ function RootLayout() {
         setIsDarkMode: setIsDarkMode,
         showBalance: showBalance,
         setShowBalance: setShowBalance,
+        searchQuery: searchQuery,
         setSearchQuery: setSearchQuery,
       }}
     >
@@ -68,6 +70,7 @@ function RootLayout() {
         <ScrollRestoration />
         {state === "loading" && <div className="loading-spinner"></div>}
         <Container className={`${state === "loading" ? "loading" : null}`}>
+          <SiteBreadcrumb />
           <Outlet />
         </Container>
       </Root>
@@ -81,25 +84,25 @@ async function loader({ request: { signal, url } }) {
 
   const filterParams = { q: query };
 
-  /* const getGlobal = getApi({
+  const getGlobal = getApi({
     url: "global",
     options: { signal },
-  }); */
+  });
 
   const getCoins = getApi({
     url: "tickers",
     options: { signal, params: filterParams },
   });
 
-  /* const getExchanges = getApi({
+  const getExchanges = getApi({
     url: "exchanges",
     options: { signal },
-  }); */
+  });
 
   return {
-    // getGlobal: await getGlobal,
+    getGlobal: await getGlobal,
     getCoins: await getCoins,
-    // getExchanges: await getExchanges,
+    getExchanges: await getExchanges,
   };
 }
 
