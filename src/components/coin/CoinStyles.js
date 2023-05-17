@@ -26,4 +26,12 @@ export const Tr = styled.tr.attrs((props) => ({
 
 export const Td = styled.td.attrs(() => ({}))`
   vertical-align: middle;
+
+  .red {
+    color: red;
+  }
+
+  .green {
+    color: green;
+  }
 `;

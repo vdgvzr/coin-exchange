@@ -1,10 +1,16 @@
 import axios from "axios";
 import { useLoaderData } from "react-router-dom";
+import SiteBreadcrumb from "../../components/breadCrumb/Breadcrumb";
 
 function CoinPage() {
   const { getCoin } = useLoaderData();
 
-  return <div>{getCoin.name}</div>;
+  return (
+    <>
+      <SiteBreadcrumb />
+      <div>{getCoin.name}</div>
+    </>
+  );
 }
 
 async function loader({ params, request: { signal } }) {

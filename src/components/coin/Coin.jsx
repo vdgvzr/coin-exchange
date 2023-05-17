@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { RootContext } from "../../layouts/RootLayout";
 import { formatValue } from "../../utils/helpers/helpers";
+import { isPositive } from "../../utils/helpers/helpers";
 
 export default function Coin({
   id,
@@ -25,6 +26,33 @@ export default function Coin({
         </Link>
       </Td>
       <Td>${formatValue(quotes.USD.price)}</Td>
+      <Td>
+        <span
+          className={
+            !isPositive(quotes.USD.percent_change_1h) ? "green" : "red"
+          }
+        >
+          {formatValue(quotes.USD.percent_change_1h)}%
+        </span>
+      </Td>
+      <Td>
+        <span
+          className={
+            !isPositive(quotes.USD.percent_change_24h) ? "green" : "red"
+          }
+        >
+          {formatValue(quotes.USD.percent_change_24h)}%
+        </span>
+      </Td>
+      <Td>
+        <span
+          className={
+            !isPositive(quotes.USD.percent_change_7d) ? "green" : "red"
+          }
+        >
+          {formatValue(quotes.USD.percent_change_7d)}%
+        </span>
+      </Td>
       <Td>${formatValue(circulating_supply * quotes.USD.price)}</Td>
     </Tr>
   );
