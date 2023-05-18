@@ -78,12 +78,7 @@ function RootLayout() {
   );
 }
 
-async function loader({ request: { signal, url } }) {
-  const searchParams = new URL(url).searchParams;
-  const query = searchParams.get("query");
-
-  const filterParams = { q: query };
-
+async function loader({ request: { signal } }) {
   const getGlobal = getApi({
     url: "global",
     options: { signal },
@@ -91,7 +86,7 @@ async function loader({ request: { signal, url } }) {
 
   const getCoins = getApi({
     url: "tickers",
-    options: { signal, params: filterParams },
+    options: { signal },
   });
 
   const getExchanges = getApi({
