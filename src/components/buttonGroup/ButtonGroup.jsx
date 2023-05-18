@@ -13,7 +13,7 @@ export default function ChartButtonGroup({
       {data.map((option, index) => {
         return (
           <ChartButton
-            isDarkMode={isDarkMode}
+            $isDarkMode={isDarkMode}
             key={index}
             variant={isDarkMode ? "light" : "dark"}
             onClick={() => type === "DATA" && setState(option.value)}

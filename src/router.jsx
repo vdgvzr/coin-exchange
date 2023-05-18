@@ -6,7 +6,7 @@ import { coinRoute } from "./pages/coinPage/CoinPage";
 
 export const PAGES = [
   { name: "Crypto", url: "crypto" },
-  { name: "Exchanges", url: "exchanges" },
+  //{ name: "Exchanges", url: "exchanges" },
 ];
 
 export const router = createBrowserRouter([

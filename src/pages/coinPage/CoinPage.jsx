@@ -68,7 +68,7 @@ function CoinPage() {
   ];
 
   return (
-    <StyledCoinPage isDarkMode={isDarkMode}>
+    <StyledCoinPage $isDarkMode={isDarkMode}>
       <Col md={9}>
         <Row>
           <Col>
@@ -117,7 +117,7 @@ function CoinPage() {
         </Row>
       </Col>
       <Col md={3}>
-        <StyledListGroup isDarkMode={isDarkMode} className="mt-4 mt-md-0">
+        <StyledListGroup $isDarkMode={isDarkMode} className="mt-4 mt-md-0">
           <ListGroup.Item>
             <small>Status: {coin.development_status}</small>
           </ListGroup.Item>

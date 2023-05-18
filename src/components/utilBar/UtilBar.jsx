@@ -61,7 +61,7 @@ export default function UtilBar() {
                 <GlobalValue
                   key={index}
                   className="p-2 d-flex"
-                  isDarkMode={isDarkMode}
+                  $isDarkMode={isDarkMode}
                 >
                   <div className="globalvalue_name me-1">
                     {globalValue.name}:

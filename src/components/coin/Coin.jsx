@@ -17,7 +17,7 @@ export default function Coin({
   const { isDarkMode } = useContext(RootContext);
 
   return (
-    <Tr isDarkMode={isDarkMode}>
+    <Tr $isDarkMode={isDarkMode}>
       <Td>{rank}</Td>
       <Td className="coinRow_name">
         <Link className={`link-${isDarkMode ? `light` : `dark`}`} to={`${id}`}>

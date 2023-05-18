@@ -58,12 +58,11 @@ export default function CoinTable({ coins, rowsPerPage, setRowsPerPage }) {
                 <FormSelect
                   id="row-display"
                   onChange={(e) => setRowsPerPage(e.target.value)}
+                  defaultValue="100"
                 >
                   <option value="10">10</option>
                   <option value="50">50</option>
-                  <option value="100" selected>
-                    100
-                  </option>
+                  <option value="100">100</option>
                   <option value={coins?.length}>All</option>
                 </FormSelect>
               </FormGroup>
@@ -76,7 +75,7 @@ export default function CoinTable({ coins, rowsPerPage, setRowsPerPage }) {
         <Row>
           <Col>
             {coins ? (
-              <StyledTable isDarkMode={isDarkMode} responsive>
+              <StyledTable $isDarkMode={isDarkMode} responsive>
                 <thead>
                   <tr>
                     <th>#</th>

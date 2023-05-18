@@ -17,7 +17,7 @@ function SiteBreadcrumb() {
 
   return (
     window.location.pathname !== "/" && (
-      <StyledBreadcrumb className="my-3" isDarkMode={isDarkMode}>
+      <StyledBreadcrumb className="my-3" $isDarkMode={isDarkMode}>
         <li className="breadcrumb-item">
           <Link to="/">{import.meta.env.VITE_SITE_NAME}</Link>
         </li>
