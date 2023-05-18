@@ -1,7 +1,7 @@
 import Coin from "../coin/Coin";
 import PropTypes from "prop-types";
 import { RootContext } from "../../layouts/RootLayout";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { StyledTable } from "./CoinTableStyles";
 import useTable from "../../utils/customHooks/useTable";
 import CoinPagination from "../coinPagination/CoinPagination";
@@ -14,6 +14,14 @@ export default function CoinTable({ coins, rowsPerPage, setRowsPerPage }) {
   const { isDarkMode, searchQuery, setSearchQuery } = useContext(RootContext);
   const [page, setPage] = useState(1);
   const { slice, range } = useTable(coins, page, rowsPerPage);
+
+  const queryRef = useRef();
+
+  useEffect(() => {
+    if (queryRef.current.value === "") {
+      queryRef.current.value = searchQuery;
+    }
+  });
 
   useEffect(() => {
     if (slice.length < 1 && page !== 1) {
@@ -39,6 +47,7 @@ export default function CoinTable({ coins, rowsPerPage, setRowsPerPage }) {
                 className="me-2"
                 name="query"
                 onChange={(e) => setSearchQuery(e.target.value)}
+                ref={queryRef}
               />
             </DomForm>
           </Col>
