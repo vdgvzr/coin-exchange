@@ -1,5 +1,5 @@
 import { Button, Col, ListGroup, Row } from "react-bootstrap";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import { formatValue } from "../../utils/helpers/helpers";
 import { Image } from "react-bootstrap";
 import { getApi } from "../../api/api";
@@ -10,6 +10,7 @@ import { isPositive } from "../../utils/helpers/helpers";
 import PropTypes from "prop-types";
 import CoinChart from "../../components/coinChart/CoinChart";
 import Heading from "../../components/heading/Heading";
+import moment from "moment";
 
 function CoinPage() {
   const { coin, ticker, chartData } = useLoaderData();
@@ -65,8 +66,6 @@ function CoinPage() {
       middle: false,
     },
   ];
-
-  console.log(coin);
 
   return (
     <StyledCoinPage isDarkMode={isDarkMode}>
@@ -144,9 +143,9 @@ function CoinPage() {
                 alt={coin.whitepaper.thumbnal}
                 fluid
               />
-              <a href={coin.whitepaper.link} target="_blank" rel="noreferrer">
+              <Link to={coin.whitepaper.link} target="_blank" rel="noreferrer">
                 Whitepaper
-              </a>
+              </Link>
             </small>
           </ListGroup.Item>
         </StyledListGroup>
@@ -192,6 +191,11 @@ CoinInfo.propTypes = {
 async function loader({ params, request: { signal, url } }) {
   const searchParams = new URL(url).searchParams;
   const interval = searchParams.get("interval");
+  const date = new Date();
+  const momentString = moment(date).subtract(364, "days").calendar();
+  const formatDate = momentString.split("/");
+  formatDate.unshift(formatDate.pop());
+  const startDate = formatDate.join("-");
 
   const getCoin = getApi({
     url: `coins/${params.coinId}`,
@@ -204,7 +208,7 @@ async function loader({ params, request: { signal, url } }) {
   });
 
   const getChartData = getApi({
-    url: `tickers/${params.coinId}/historical?start=2022-05-18&interval=${
+    url: `tickers/${params.coinId}/historical?start=${startDate}&interval=${
       interval ? interval : "1d"
     }`,
     options: { signal },

@@ -1,12 +1,13 @@
-import { Container, Nav, Navbar, Button, Form } from "react-bootstrap";
+import { Container, Nav, Navbar } from "react-bootstrap";
 import { PAGES } from "../../router";
 import PropTypes from "prop-types";
 import { RootContext } from "../../layouts/RootLayout";
 import { useContext } from "react";
-import { Form as DomForm } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 export default function Navigation() {
-  const { isDarkMode, setSearchQuery } = useContext(RootContext);
+  const { isDarkMode } = useContext(RootContext);
 
   return (
     <Navbar
@@ -18,17 +19,17 @@ export default function Navigation() {
       }`}
     >
       <Container>
-        <Navbar.Brand className="text-uppercase" href="/">
+        <Link className="navbar-brand text-uppercase" to="/">
           {import.meta.env.VITE_SITE_NAME}
-        </Navbar.Brand>
+        </Link>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="w-100">
             {PAGES.map((page, index) => {
               return (
-                <Nav.Link key={index} href={page.url}>
+                <NavLink className="nav-link" key={index} to={page.url}>
                   {page.name}
-                </Nav.Link>
+                </NavLink>
               );
             })}
           </Nav>

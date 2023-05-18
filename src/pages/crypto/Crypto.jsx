@@ -2,7 +2,7 @@ import CoinTable from "../../components/coinTable/CoinTable";
 import { useContext, useState } from "react";
 import { RootContext } from "../../layouts/RootLayout";
 
-function Home() {
+function Crypto() {
   const { coins } = useContext(RootContext);
   const [rowsPerPage, setRowsPerPage] = useState(100);
 
@@ -15,4 +15,4 @@ function Home() {
   );
 }
 
-export const homeRoute = { element: <Home /> };
+export const cryptoRoute = { element: <Crypto /> };

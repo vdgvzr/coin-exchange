@@ -1,29 +1,27 @@
-import { createBrowserRouter } from "react-router-dom";
+import { Navigate, createBrowserRouter } from "react-router-dom";
 import ErrorPage from "./pages/errorPage/ErrorPage";
 import { rootRoute } from "./layouts/RootLayout";
-import { homeRoute } from "./pages/home/Home";
+import { cryptoRoute } from "./pages/crypto/Crypto";
 import { coinRoute } from "./pages/coinPage/CoinPage";
-import { Container } from "react-bootstrap";
 
-export const PAGES = [];
+export const PAGES = [
+  { name: "Crypto", url: "crypto" },
+  { name: "Exchanges", url: "exchanges" },
+];
 
 export const router = createBrowserRouter([
   {
     path: "/",
     ...rootRoute,
-    errorElement: (
-      <Container className="my-5">
-        <ErrorPage />
-      </Container>
-    ),
     children: [
       {
         errorElement: <ErrorPage />,
         children: [
+          { index: true, element: <Navigate to="/" /> },
           {
-            path: "/",
+            path: "/crypto",
             children: [
-              { index: true, ...homeRoute },
+              { index: true, ...cryptoRoute },
               {
                 path: ":coinId",
                 children: [{ index: true, ...coinRoute }],
