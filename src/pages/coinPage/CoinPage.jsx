@@ -11,6 +11,7 @@ import PropTypes from "prop-types";
 import CoinChart from "../../components/coinChart/CoinChart";
 import Heading from "../../components/heading/Heading";
 import moment from "moment";
+import { CoinImage } from "../homePage/HomePageStyles";
 
 function CoinPage() {
   const { coin, ticker, chartData } = useLoaderData();
@@ -68,7 +69,7 @@ function CoinPage() {
   ];
 
   return (
-    <StyledCoinPage $isDarkMode={isDarkMode}>
+    <StyledCoinPage isDarkMode={isDarkMode}>
       <Col md={9}>
         <Row>
           <Col>
@@ -82,7 +83,7 @@ function CoinPage() {
         <Row>
           <Col>
             <div className="coinpage_name">
-              <Image src={coin?.logo} />
+              <CoinImage src={coin?.logo} roundedCircle absolute={false} />
               <span className="coinpage_name_name">{ticker?.name}</span>{" "}
               <small className="coinpage_name_ticker?">{ticker?.symbol}</small>
             </div>
@@ -117,7 +118,7 @@ function CoinPage() {
         </Row>
       </Col>
       <Col md={3}>
-        <StyledListGroup $isDarkMode={isDarkMode} className="mt-4 mt-md-0">
+        <StyledListGroup isDarkMode={isDarkMode} className="mt-4 mt-md-0">
           <ListGroup.Item>
             <small>Status: {coin.development_status}</small>
           </ListGroup.Item>

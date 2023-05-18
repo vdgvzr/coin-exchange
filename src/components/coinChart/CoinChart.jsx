@@ -74,7 +74,7 @@ export default function CoinChart({ coinName, chartData }) {
             <ChartButtonGroup
               data={chartDataOptions}
               type="DATA"
-              $isDarkMode={isDarkMode}
+              isDarkMode={isDarkMode}
               setState={setShowData}
             />
           </Col>
@@ -84,7 +84,7 @@ export default function CoinChart({ coinName, chartData }) {
             <ChartButtonGroup
               data={chartIntervalOptions}
               type="INTERVAL"
-              $isDarkMode={isDarkMode}
+              isDarkMode={isDarkMode}
             />
           </Col>
         </Row>

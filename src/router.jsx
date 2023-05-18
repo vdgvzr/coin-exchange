@@ -1,8 +1,9 @@
-import { Navigate, createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter } from "react-router-dom";
 import ErrorPage from "./pages/errorPage/ErrorPage";
 import { rootRoute } from "./layouts/RootLayout";
 import { cryptoRoute } from "./pages/crypto/Crypto";
 import { coinRoute } from "./pages/coinPage/CoinPage";
+import { homePageRoute } from "./pages/homePage/HomePage";
 
 export const PAGES = [
   { name: "Crypto", url: "crypto" },
@@ -17,7 +18,7 @@ export const router = createBrowserRouter([
       {
         errorElement: <ErrorPage />,
         children: [
-          { index: true, element: <Navigate to="/" /> },
+          { index: true, ...homePageRoute },
           {
             path: "/crypto",
             children: [

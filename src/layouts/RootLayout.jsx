@@ -64,7 +64,7 @@ function RootLayout() {
         setSearchQuery: setSearchQuery,
       }}
     >
-      <Root $isDarkMode={isDarkMode}>
+      <Root isDarkMode={isDarkMode}>
         <UtilBar />
         <Navigation />
         <ScrollRestoration />

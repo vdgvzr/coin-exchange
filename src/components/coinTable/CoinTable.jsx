@@ -75,7 +75,7 @@ export default function CoinTable({ coins, rowsPerPage, setRowsPerPage }) {
         <Row>
           <Col>
             {coins ? (
-              <StyledTable $isDarkMode={isDarkMode} responsive>
+              <StyledTable isDarkMode={isDarkMode} responsive>
                 <thead>
                   <tr>
                     <th>#</th>

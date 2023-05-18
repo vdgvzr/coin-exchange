@@ -16,7 +16,7 @@ export default function CoinPagination({ range, setPage, page }) {
     <CoinPaginationList
       size="sm"
       className="justify-content-center"
-      $isDarkMode={isDarkMode}
+      isDarkMode={isDarkMode}
     >
       <Pagination.First onClick={() => setPage(1)} />
       <Pagination.Prev

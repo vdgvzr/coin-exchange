@@ -21,6 +21,10 @@ export const Root = styled.div.attrs((props) => ({
     }
   }
 
+  a {
+    color: ${(props) => (props.isDarkMode ? globalVar.colorGrey : `black`)};
+  }
+
   .loading {
     filter: blur(5px);
     pointer-events: none;
